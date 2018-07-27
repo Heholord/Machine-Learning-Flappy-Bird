@@ -21,8 +21,8 @@ App.Main = function(game){
 	this.STATE_PLAY = 3;
 	this.STATE_GAMEOVER = 4;
 
-	this.GA_MAX_UNIT = 250;
-	this.GA_BEST = 10;
+	this.GA_MAX_UNIT = 50;
+	this.GA_BEST = 5;
 
 	this.BARRIER_DISTANCE = 300;
 }
@@ -275,7 +275,9 @@ App.Main.prototype = {
     },
 
 	onMoreGamesClick : function(){
-		window.open("http://www.askforgametask.com", "_blank");
+		this.BirdGroup.forEachAlive(function(bird){
+			this.onDeath(bird);
+		}, this);
 	},
 
 	onPauseClick : function(){
